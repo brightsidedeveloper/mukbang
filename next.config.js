@@ -4,6 +4,9 @@ const nextConfig = {
     serverActions: true,
     serverComponentsExternalPackages: ['mongoose'],
   },
+  images: {
+    domains: ['firebasestorage.googleapis.com'],
+  },
 }
 
 module.exports = nextConfig
