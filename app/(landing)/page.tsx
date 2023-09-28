@@ -1,5 +1,9 @@
-import React from 'react'
+import { ThemeToggle } from '@/components/ThemeToggle'
 
 export default function page() {
-  return <div>page</div>
+  return (
+    <div>
+      page <ThemeToggle />
+    </div>
+  )
 }
