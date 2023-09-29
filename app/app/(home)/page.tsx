@@ -1,10 +1,12 @@
 import { Button } from '@/components/ui/button'
+import { Switch } from '@/components/ui/switch'
 import Link from 'next/link'
+import Themer from './Themer'
 
 export default async function page() {
   return (
-    <div>
-      <h2 className='text-5xl mb-5'>Home</h2>
+    <div className='flex flex-col gap-10'>
+      <h2 className='text-5xl'>Home</h2>
       <div className='flex gap-4 flex-wrap'>
         <Button>
           <Link href='/app/image-upload'>Image Upload</Link>
@@ -13,6 +15,7 @@ export default async function page() {
           <Link href='/app/live-kit'>Live Kit</Link>
         </Button>
       </div>
+      <Themer />
     </div>
   )
 }
