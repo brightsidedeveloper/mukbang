@@ -6,6 +6,21 @@ import { connectToDB } from '@/lib/mongoose'
 import { revalidatePath } from 'next/cache'
 import Image from 'next/image'
 
+export async function generateMetaData({
+  searchParams: { theme },
+}: {
+  searchParams: { [key: string]: string | string[] | undefined }
+}) {
+  return {
+    themeColor:
+      theme === 'dark-blue'
+        ? '#020817'
+        : theme === 'dark-blue'
+        ? '#0c0a09'
+        : '#FFFFFF',
+  }
+}
+
 export default async function page() {
   const getImages = async () => {
     'use server'

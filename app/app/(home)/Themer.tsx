@@ -1,10 +1,12 @@
 'use client'
 
 import { Switch } from '@/components/ui/switch'
+import { useTheme } from 'next-themes'
 import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 export default function Themer() {
+  const { resolvedTheme } = useTheme()
   const router = useRouter()
   const pathname = usePathname()
   const [theme, setTheme] = useState(false)
@@ -17,12 +19,12 @@ export default function Themer() {
       document.body.classList.remove('theme-red')
     }
 
-    if (document.documentElement.classList.contains('dark')) {
+    if (resolvedTheme === 'dark') {
       router.push(pathname + `?theme=dark-${theme ? 'red' : 'blue'}`)
     } else {
       router.push(pathname)
     }
-  }, [theme, pathname, router])
+  }, [theme, pathname, router, resolvedTheme])
 
   return <Switch checked={theme} onCheckedChange={setTheme} />
 }
