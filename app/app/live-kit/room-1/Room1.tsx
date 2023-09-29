@@ -42,10 +42,7 @@ function ChatRoom() {
   }, [chatMessages])
 
   if (!send) return null
-  const toggle = (state: boolean) => {
-    setChecked(state)
-    send(state ? 'off' : 'on')
-  }
+  const toggle = (state: boolean) => send(state ? 'on' : 'off')
 
   return <Switch checked={checked} onCheckedChange={toggle} />
 }
