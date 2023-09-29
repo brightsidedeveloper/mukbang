@@ -44,5 +44,9 @@ function ChatRoom() {
   if (!send) return null
   const toggle = (state: boolean) => send(state ? 'on' : 'off')
 
-  return <Switch checked={checked} onCheckedChange={toggle} />
+  return (
+    <div className='h-full flex justify-center items-center'>
+      <Switch checked={checked} onCheckedChange={toggle} />
+    </div>
+  )
 }
