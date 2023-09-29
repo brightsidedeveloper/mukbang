@@ -6,7 +6,7 @@ import { connectToDB } from '@/lib/mongoose'
 import { revalidatePath } from 'next/cache'
 import Image from 'next/image'
 
-export async function generateMetaData({
+export async function generateMetadata({
   searchParams: { theme },
 }: {
   searchParams: { [key: string]: string | string[] | undefined }

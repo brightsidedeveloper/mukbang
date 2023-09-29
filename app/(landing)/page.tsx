@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import HomeThemer from './HomeThemer'
 
-export async function generateMetaData({
+export async function generateMetadata({
   searchParams: { theme },
 }: {
   searchParams: { [key: string]: string | string[] | undefined }

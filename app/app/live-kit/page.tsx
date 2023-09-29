@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
-export async function generateMetaData({
+export async function generateMetadata({
   searchParams: { theme },
 }: {
   searchParams: { [key: string]: string | string[] | undefined }
