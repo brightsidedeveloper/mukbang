@@ -15,7 +15,7 @@ export async function generateMetadata({
     themeColor:
       theme === 'dark-blue'
         ? '#020817'
-        : theme === 'dark-blue'
+        : theme === 'dark-red'
         ? '#0c0a09'
         : '#FFFFFF',
   }
