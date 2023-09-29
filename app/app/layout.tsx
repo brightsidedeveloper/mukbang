@@ -4,6 +4,21 @@ import { LogOutIcon } from 'lucide-react'
 import DyanmicHomeLink from './DynamicHomeLink'
 import CommandMenu from '@/components/CommandMenu'
 
+export async function generateMetaData({
+  params: { theme },
+}: {
+  params: { theme: string }
+}) {
+  return {
+    themeColor:
+      theme === 'dark-blue'
+        ? '#020817'
+        : theme === 'dark-blue'
+        ? '#0c0a09'
+        : '#FFFFFF',
+  }
+}
+
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
     <div className='h-full'>
