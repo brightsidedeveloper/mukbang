@@ -11,6 +11,7 @@ import {
 } from './ui/command'
 import { useRouter } from 'next/navigation'
 import { useClerk } from '@clerk/nextjs'
+import useHydrated from '@/hooks/useHydrated'
 
 export default function CommandMenu() {
   const { signOut } = useClerk()
@@ -28,61 +29,62 @@ export default function CommandMenu() {
     return () => document.removeEventListener('keydown', down)
   }, [])
 
-  return (
-    <>
-      <button onClick={() => setOpen(true)}>ctrl + k</button>
-      <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder='Type a command or search...' />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading='Pages'>
-            <CommandItem
-              onSelect={() => {
-                router.push('/app')
-                setOpen(false)
-              }}
-            >
-              Home
-            </CommandItem>
-            <CommandItem
-              onSelect={() => {
-                router.push('/app/image-upload')
-                setOpen(false)
-              }}
-            >
-              Image Upload
-            </CommandItem>
-            <CommandItem
-              onSelect={() => {
-                router.push('/app/live-kit')
-                setOpen(false)
-              }}
-            >
-              Live Kit
-            </CommandItem>
-          </CommandGroup>
-          <CommandGroup heading='Rooms'>
-            <CommandItem
-              onSelect={() => {
-                router.push('/app/live-kit/room-1')
-                setOpen(false)
-              }}
-            >
-              Room 1
-            </CommandItem>
-          </CommandGroup>
-          <CommandGroup heading='Settings'>
-            <CommandItem
-              onSelect={() => {
-                signOut()
-                setOpen(false)
-              }}
-            >
-              Logout
-            </CommandItem>
-          </CommandGroup>
-        </CommandList>
-      </CommandDialog>
-    </>
-  )
+  if (useHydrated())
+    return (
+      <>
+        <button onClick={() => setOpen(true)}>ctrl + k</button>
+        <CommandDialog open={open} onOpenChange={setOpen}>
+          <CommandInput placeholder='Type a command or search...' />
+          <CommandList>
+            <CommandEmpty>No results found.</CommandEmpty>
+            <CommandGroup heading='Pages'>
+              <CommandItem
+                onSelect={() => {
+                  router.push('/app')
+                  setOpen(false)
+                }}
+              >
+                Home
+              </CommandItem>
+              <CommandItem
+                onSelect={() => {
+                  router.push('/app/image-upload')
+                  setOpen(false)
+                }}
+              >
+                Image Upload
+              </CommandItem>
+              <CommandItem
+                onSelect={() => {
+                  router.push('/app/live-kit')
+                  setOpen(false)
+                }}
+              >
+                Live Kit
+              </CommandItem>
+            </CommandGroup>
+            <CommandGroup heading='Rooms'>
+              <CommandItem
+                onSelect={() => {
+                  router.push('/app/live-kit/room-1')
+                  setOpen(false)
+                }}
+              >
+                Room 1
+              </CommandItem>
+            </CommandGroup>
+            <CommandGroup heading='Settings'>
+              <CommandItem
+                onSelect={() => {
+                  signOut()
+                  setOpen(false)
+                }}
+              >
+                Logout
+              </CommandItem>
+            </CommandGroup>
+          </CommandList>
+        </CommandDialog>
+      </>
+    )
 }

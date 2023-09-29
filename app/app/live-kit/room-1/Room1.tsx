@@ -31,3 +31,7 @@ export default function Room1({ uid }: { uid: string }) {
     </LiveKitRoom>
   )
 }
+
+// function ChatRoom() {
+//   const
+// }
