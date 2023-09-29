@@ -1,17 +1,21 @@
+import { ThemeToggle } from '@/components/ThemeToggle'
 import { SignOutButton } from '@clerk/nextjs'
 import { LogOutIcon } from 'lucide-react'
-import Link from 'next/link'
+import DyanmicHomeLink from './DynamicHomeLink'
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className='h-full '>
+    <div className='h-full'>
       <header className='sticky top-0 p-6 flex justify-between items-center bg-slate-200 dark:bg-slate-800'>
-        <Link href='/app'>Back Home</Link>
-        <SignOutButton>
-          <LogOutIcon className='cursor-pointer' />
-        </SignOutButton>
+        <DyanmicHomeLink />
+        <div className='flex gap-4 items-center'>
+          <ThemeToggle />
+          <SignOutButton>
+            <LogOutIcon className='cursor-pointer' />
+          </SignOutButton>
+        </div>
       </header>
-      <main className='h-full p-8'>{children}</main>
+      <main className='p-8'>{children}</main>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { Progress } from '@/components/ui/progress'
 import { storage } from '@/lib/firebase'
 import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 import Image from 'next/image'
@@ -40,7 +41,7 @@ export default function ImageUpload({ uploadImage }: ImageUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null)
 
   return (
-    <div>
+    <div className='flex flex-col gap-5'>
       {' '}
       {image && (
         <>
@@ -51,9 +52,9 @@ export default function ImageUpload({ uploadImage }: ImageUploadProps) {
             height={500}
           />
           <Button onClick={upload}>Upload</Button>
+          <Progress value={uploadPercent} />
         </>
       )}
-      {uploadPercent > 0 && <p>Uploading {uploadPercent}%</p>}
       <input
         ref={inputRef}
         type='file'

@@ -37,9 +37,16 @@ export default async function page() {
   return (
     <div className='flex flex-col items-center gap-10 justify-center'>
       <ImageUpload uploadImage={uploadImage} />
-      <div className='flex flex-col gap-10'>
-        {images.map(({ url }: { url: string }) => (
-          <Image key={url} src={url} alt='Image' width={500} height={500} />
+      <div className='flex justify-center flex-wrap gap-10'>
+        {images.reverse().map(({ url }: { url: string }) => (
+          <div key={url} className='relative w-96 h-96'>
+            <Image
+              src={url}
+              alt='Image'
+              fill
+              className='absolute object-cover'
+            />
+          </div>
         ))}
       </div>
     </div>
