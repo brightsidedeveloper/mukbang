@@ -42,7 +42,6 @@ export default function ImageUpload({ uploadImage }: ImageUploadProps) {
 
   return (
     <div className='flex flex-col gap-5'>
-      {' '}
       {image && (
         <>
           <Image
