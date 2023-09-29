@@ -5,6 +5,7 @@ const nextConfig = {
     serverComponentsExternalPackages: ['mongoose'],
   },
   images: {
+    dangerouslyAllowSVG: true,
     domains: ['firebasestorage.googleapis.com'],
   },
 }
