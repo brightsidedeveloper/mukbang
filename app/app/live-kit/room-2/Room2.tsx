@@ -60,7 +60,7 @@ function ChatRoom() {
           placeholder='Type your message here'
         />
         <button onClick={sendMessage}>
-          <Send />
+          <Send className='w-5 h-5 text-primary' />
         </button>
       </div>
     </>
