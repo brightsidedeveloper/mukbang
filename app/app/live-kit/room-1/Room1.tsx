@@ -1,7 +1,7 @@
 'use client'
 
 import '@livekit/components-styles'
-import { LiveKitRoom, useChat } from '@livekit/components-react'
+import { LiveKitRoom, useChat, useRoomContext } from '@livekit/components-react'
 import { useEffect, useState } from 'react'
 import { Switch } from '@/components/ui/switch'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -44,6 +44,8 @@ function SwitchRoom() {
   const [checked2, setChecked2] = useState(false)
   const [checked3, setChecked3] = useState(false)
   const { send, chatMessages } = useChat()
+  const room = useRoomContext()
+  console.log(room)
 
   useEffect(() => {
     if (chatMessages.length === 0) return
@@ -60,6 +62,7 @@ function SwitchRoom() {
       (acc, current, index) => (current.message.includes('-3') ? index : acc),
       -1
     )
+    console.log(chatMessages[lastIndex1])
     if (lastIndex1 > -1) {
       const lastMsg1 = chatMessages[lastIndex1].message
       setChecked1(curr =>

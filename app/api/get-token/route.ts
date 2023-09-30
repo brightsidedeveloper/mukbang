@@ -24,7 +24,10 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 })
   }
 
-  const at = new AccessToken(apiKey, apiSecret, { identity: username })
+  const at = new AccessToken(apiKey, apiSecret, {
+    identity: username,
+    metadata: JSON.stringify({ whatever: 'bro' }),
+  })
 
   at.addGrant({ room, roomJoin: true, canPublish: true, canSubscribe: true })
 

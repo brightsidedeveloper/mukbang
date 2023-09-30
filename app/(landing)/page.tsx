@@ -2,8 +2,12 @@ import { ThemeToggle } from '@/components/ThemeToggle'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import HomeThemer from './HomeThemer'
+import { auth } from '@clerk/nextjs'
+import { redirect } from 'next/navigation'
 
 export default function page() {
+  const user = auth()
+  if (user.userId) redirect('/app')
   return (
     <div>
       <nav className='p-6 flex justify-between items-center border-b-[1px] shadow-md border-muted-background/30 bg-background/90'>
