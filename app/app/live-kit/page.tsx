@@ -22,6 +22,9 @@ export default function page() {
       <Button>
         <Link href='/app/live-kit/room-1'>Room 1</Link>
       </Button>
+      <Button>
+        <Link href='/app/live-kit/room-2'>Room 2</Link>
+      </Button>
     </div>
   )
 }
