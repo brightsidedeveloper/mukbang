@@ -33,20 +33,47 @@ export default function Room1({ uid }: { uid: string }) {
 }
 
 function ChatRoom() {
-  const [checked, setChecked] = useState(false)
+  const [checked1, setChecked1] = useState(false)
+  const [checked2, setChecked2] = useState(false)
+  const [checked3, setChecked3] = useState(false)
   const { send, chatMessages } = useChat()
 
   useEffect(() => {
     if (chatMessages.length === 0) return
-    setChecked(chatMessages[chatMessages.length - 1].message === 'on')
+    const lastMsg = chatMessages[chatMessages.length - 1].message
+    setChecked1(curr =>
+      lastMsg === 'on-1' ? true : lastMsg === 'off-1' ? false : curr
+    )
+    setChecked2(curr =>
+      lastMsg === 'on-2' ? true : lastMsg === 'off-2' ? false : curr
+    )
+    setChecked3(curr =>
+      lastMsg === 'on-3' ? true : lastMsg === 'off-3' ? false : curr
+    )
   }, [chatMessages])
 
   if (!send) return null
-  const toggle = (state: boolean) => send(state ? 'on' : 'off')
+  const toggle1 = (state: boolean) => send(state ? 'on-1' : 'off-1')
+  const toggle2 = (state: boolean) => send(state ? 'on-2' : 'off-2')
+  const toggle3 = (state: boolean) => send(state ? 'on-3' : 'off-3')
 
   return (
-    <div className='h-full flex justify-center items-center'>
-      <Switch checked={checked} onCheckedChange={toggle} />
+    <div className='h-full flex flex-col gap-20 justify-center items-center'>
+      <Switch
+        className='scale-[2.5]'
+        checked={checked1}
+        onCheckedChange={toggle1}
+      />
+      <Switch
+        className='scale-[2.5]'
+        checked={checked2}
+        onCheckedChange={toggle2}
+      />
+      <Switch
+        className='scale-[2.5]'
+        checked={checked3}
+        onCheckedChange={toggle3}
+      />
     </div>
   )
 }
