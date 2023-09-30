@@ -40,16 +40,37 @@ function ChatRoom() {
 
   useEffect(() => {
     if (chatMessages.length === 0) return
-    const lastMsg = chatMessages[chatMessages.length - 1].message
-    setChecked1(curr =>
-      lastMsg === 'on-1' ? true : lastMsg === 'off-1' ? false : curr
+    const lastIndex1 = chatMessages.reduce(
+      (acc, current, index) => (current.message.includes('-1') ? index : acc),
+      -1
     )
-    setChecked2(curr =>
-      lastMsg === 'on-2' ? true : lastMsg === 'off-2' ? false : curr
+    console.log(lastIndex1)
+    const lastIndex2 = chatMessages.reduce(
+      (acc, current, index) => (current.message.includes('-2') ? index : acc),
+      -1
     )
-    setChecked3(curr =>
-      lastMsg === 'on-3' ? true : lastMsg === 'off-3' ? false : curr
+    const lastIndex3 = chatMessages.reduce(
+      (acc, current, index) => (current.message.includes('-3') ? index : acc),
+      -1
     )
+    if (lastIndex1 > -1) {
+      const lastMsg1 = chatMessages[lastIndex1].message
+      setChecked1(curr =>
+        lastMsg1 === 'on-1' ? true : lastMsg1 === 'off-1' ? false : curr
+      )
+    }
+    if (lastIndex2 > -1) {
+      const lastMsg2 = chatMessages[lastIndex2].message
+      setChecked2(curr =>
+        lastMsg2 === 'on-2' ? true : lastMsg2 === 'off-2' ? false : curr
+      )
+    }
+    if (lastIndex3 > -1) {
+      const lastMsg3 = chatMessages[lastIndex3].message
+      setChecked3(curr =>
+        lastMsg3 === 'on-3' ? true : lastMsg3 === 'off-3' ? false : curr
+      )
+    }
   }, [chatMessages])
 
   if (!send) return null
