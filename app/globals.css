@@ -57,7 +57,7 @@ html, body, :root {
 
 /* Rose */
 @layer base {
-  :root .theme-rose  {
+   .light .theme-rose {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
@@ -105,7 +105,7 @@ html, body, :root {
 
 /* Yellow */
 @layer base {
-  :root .theme-yellow {
+  .light .theme-yellow {
     --background: 0 0% 100%;
     --foreground: 20 14.3% 4.1%;
     --card: 0 0% 100%;
@@ -153,7 +153,7 @@ html, body, :root {
 
 /* Blue */
 @layer base {
-  :root .theme-blue {
+  .light .theme-blue {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -201,7 +201,7 @@ html, body, :root {
 
 /* Green */
 @layer base {
-  :root .theme-green {
+  .light .theme-green {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
@@ -249,7 +249,7 @@ html, body, :root {
 
 /* Purple */
 @layer base {
-  :root .theme-purple {
+  .light .theme-purple {
     --background: 0 0% 100%;
     --foreground: 224 71.4% 4.1%;
     --card: 0 0% 100%;
@@ -297,7 +297,7 @@ html, body, :root {
 
 /* Red */
 @layer base {
-  :root .theme-red {
+  .light .theme-red {
     --background: 0 0% 100%;
     --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
