@@ -32,7 +32,10 @@ export default function CommandMenu() {
   if (useHydrated())
     return (
       <>
-        <button onClick={() => setOpen(true)}>ctrl + k</button>
+        <button onClick={() => setOpen(true)}>
+          <span className='hidden sm:inline'>ctrl + k</span>
+          <span className='sm:hidden'>cmd</span>
+        </button>
         <CommandDialog open={open} onOpenChange={setOpen}>
           <CommandInput placeholder='Type a command or search...' />
           <CommandList>

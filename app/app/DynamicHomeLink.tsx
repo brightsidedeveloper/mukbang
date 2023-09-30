@@ -12,5 +12,10 @@ export default function DyanmicHomeLink() {
         <ChevronLeft /> Back Home
       </Link>
     )
-  return <h2 className='text-2xl font-bold'>Mukbang!</h2>
+  return (
+    <>
+      <h2 className='hidden sm:block text-2xl font-bold'>Mukbang!</h2>
+      <h2 className='sm:hidden text-2xl font-bold'>Bang!</h2>
+    </>
+  )
 }

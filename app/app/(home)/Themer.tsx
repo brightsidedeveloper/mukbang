@@ -1,6 +1,5 @@
 'use client'
 
-import { Switch } from '@/components/ui/switch'
 import { cn } from '@/lib/utils'
 import { useTheme } from 'next-themes'
 import { usePathname, useRouter } from 'next/navigation'
@@ -16,26 +15,26 @@ const themes = [
 ]
 
 export default function Themer() {
-  const { resolvedTheme } = useTheme()
-  const router = useRouter()
-  const pathname = usePathname()
-  const [themeState, setTheme] = useState<string | null>('red')
+  const [themeState, setTheme] = useState<string | null>(
+    localStorage.getItem('custom-theme') || null
+  )
   useEffect(() => {
     document.body.classList.forEach(i => {
       if (/theme-[^ ]+/g.test(i)) document.body.classList.remove(i)
     })
-    if (!themeState) return
+    if (!themeState) return localStorage.removeItem('custom-theme')
+    localStorage.setItem('custom-theme', themeState || '')
     document.body.classList.add('theme-' + themeState)
-  }, [themeState, pathname, router, resolvedTheme])
+  }, [themeState])
 
   return (
-    <div className='grid grid-cols-6 gap-2 '>
+    <div className='grid grid-cols-3 sm:grid-cols-6 gap-1 gap-x-3 sm:gap-2 '>
       {themes.map(({ theme, color, border }) => (
         <button
           key={theme}
           onClick={() => setTheme(curr => (curr === theme ? null : theme))}
           className={cn(
-            'w-6 h-6 flex items-center justify-center transition-all rounded-full border-2 p-0.5',
+            'w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center transition-all rounded-full border sm:border-2 p-0.5',
             theme === themeState && border
           )}
         >
