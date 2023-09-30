@@ -3,16 +3,6 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import HomeThemer from './HomeThemer'
 
-export async function generateMetadata({
-  searchParams: { theme },
-}: {
-  searchParams: { [key: string]: string | string[] | undefined }
-}) {
-  return {
-    themeColor: theme === 'dark' ? '#09090b' : '#FFFFFF',
-  }
-}
-
 export default function page() {
   return (
     <div>

@@ -10,6 +10,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
     <div className='h-full'>
       <header className='sticky z-10 backdrop-blur top-0 px-6 h-16 flex justify-between items-center border-b-[1px] shadow-md border-muted-background/30 bg-background/90 '>
         <DyanmicHomeLink />
+        <Themer />
         <div className='flex gap-4 items-center'>
           <CommandMenu />
           <ThemeToggle />
@@ -18,7 +19,6 @@ export default function layout({ children }: { children: React.ReactNode }) {
           </SignOutButton>
         </div>
       </header>
-      <Themer />
 
       <main className='p-8 main-height'>{children}</main>
     </div>
