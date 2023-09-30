@@ -1,8 +1,6 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { useTheme } from 'next-themes'
-import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 const themes = [
@@ -18,6 +16,7 @@ export default function Themer() {
   const [themeState, setTheme] = useState<string | null>(
     localStorage.getItem('custom-theme') || null
   )
+
   useEffect(() => {
     document.body.classList.forEach(i => {
       if (/theme-[^ ]+/g.test(i)) document.body.classList.remove(i)
@@ -38,7 +37,6 @@ export default function Themer() {
             theme === themeState && border
           )}
         >
-          <div className='sr-only'>{theme}</div>
           <div className={cn('w-full h-full rounded-full', color)}></div>
         </button>
       ))}

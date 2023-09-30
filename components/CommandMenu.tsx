@@ -75,6 +75,14 @@ export default function CommandMenu() {
               >
                 Room 1
               </CommandItem>
+              <CommandItem
+                onSelect={() => {
+                  router.push('/app/live-kit/room-2')
+                  setOpen(false)
+                }}
+              >
+                Room 2
+              </CommandItem>
             </CommandGroup>
             <CommandGroup heading='Settings'>
               <CommandItem

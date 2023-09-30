@@ -1,7 +1,7 @@
 'use client'
 
 import '@livekit/components-styles'
-import { LiveKitRoom, useChat, Chat } from '@livekit/components-react'
+import { LiveKitRoom, useChat } from '@livekit/components-react'
 import { useEffect, useState } from 'react'
 import { Switch } from '@/components/ui/switch'
 import { Skeleton } from '@/components/ui/skeleton'
@@ -34,12 +34,12 @@ export default function Room1({ uid }: { uid: string }) {
 
   return (
     <LiveKitRoom token={token} serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_URL}>
-      <ChatRoom />
+      <SwitchRoom />
     </LiveKitRoom>
   )
 }
 
-function ChatRoom() {
+function SwitchRoom() {
   const [checked1, setChecked1] = useState(false)
   const [checked2, setChecked2] = useState(false)
   const [checked3, setChecked3] = useState(false)
