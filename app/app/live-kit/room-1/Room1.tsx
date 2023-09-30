@@ -40,12 +40,11 @@ export default function Room1({ uid }: { uid: string }) {
 }
 
 function SwitchRoom() {
+  const room = useRoomContext()
+  const { send, chatMessages } = useChat()
   const [checked1, setChecked1] = useState(false)
   const [checked2, setChecked2] = useState(false)
   const [checked3, setChecked3] = useState(false)
-  const { send, chatMessages } = useChat()
-  const room = useRoomContext()
-  console.log(room)
 
   useEffect(() => {
     if (chatMessages.length === 0) return
@@ -89,7 +88,10 @@ function SwitchRoom() {
   const toggle3 = (state: boolean) => send(state ? 'on-3' : 'off-3')
 
   return (
-    <div className='h-full flex flex-col gap-20 justify-center items-center'>
+    <div className='h-full flex flex-col gap-20 justify-center items-center relative'>
+      <div className='absolute flex flex-col top-0 right-0'>
+        Participants: {room.participants.size + 1}
+      </div>
       <Switch
         className='scale-[2.5]'
         checked={checked1}
