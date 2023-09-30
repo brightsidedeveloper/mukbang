@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import Themer from './Themer'
 
 export async function generateMetadata({
   searchParams: { theme },
@@ -28,7 +27,6 @@ export default async function page() {
           <Link href='/app/live-kit'>Live Kit</Link>
         </Button>
       </div>
-      <Themer />
     </div>
   )
 }

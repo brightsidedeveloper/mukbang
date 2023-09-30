@@ -3,6 +3,7 @@ import { SignOutButton } from '@clerk/nextjs'
 import { LogOutIcon } from 'lucide-react'
 import DyanmicHomeLink from './DynamicHomeLink'
 import CommandMenu from '@/components/CommandMenu'
+import Themer from './(home)/Themer'
 
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
@@ -17,6 +18,8 @@ export default function layout({ children }: { children: React.ReactNode }) {
           </SignOutButton>
         </div>
       </header>
+      <Themer />
+
       <main className='p-8 main-height'>{children}</main>
     </div>
   )
