@@ -28,6 +28,7 @@ interface AccountFormProps {
 export default function AccountForm({ user, updateUser }: AccountFormProps) {
   const [username, setUsername] = useState(user?.name || '')
   const [newImage, setNewImage] = useState<any>(null)
+  const [newImageUrl, setNewImageUrl] = useState<string | null>(null)
   const [profilePicture, setProfilePicture] = useState(
     user?.imageURL || 'https://picsum.photos/200'
   )
@@ -49,6 +50,7 @@ export default function AccountForm({ user, updateUser }: AccountFormProps) {
           getDownloadURL(uploadTask.snapshot.ref).then(async downloadURL => {
             await updateUser(username, downloadURL)
             setNewImage(null)
+            setNewImageUrl(null)
             setProfilePicture(downloadURL)
             setLoading(false)
             toast.success('Successfully updated your profile!')
@@ -79,7 +81,7 @@ export default function AccountForm({ user, updateUser }: AccountFormProps) {
           <div className='flex gap-4 items-center mb-4'>
             <div className='relative w-full max-w-[5rem] h-20'>
               <Image
-                src={newImage ? URL.createObjectURL(newImage) : profilePicture}
+                src={newImageUrl ? newImageUrl : profilePicture}
                 alt='pfp'
                 fill
                 className='object-cover border-2 shadow-lg border-accent rounded-full'
@@ -88,7 +90,14 @@ export default function AccountForm({ user, updateUser }: AccountFormProps) {
             <Input
               type='file'
               accept='image/*'
-              onChange={e => setNewImage(e.target.files?.[0])}
+              onChange={e => {
+                setNewImage(e.target.files?.[0])
+                setNewImageUrl(
+                  e.target.files?.[0]
+                    ? URL.createObjectURL(e.target.files[0])
+                    : null
+                )
+              }}
               className='cursor-pointer'
             />
           </div>

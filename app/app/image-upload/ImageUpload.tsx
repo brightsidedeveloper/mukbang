@@ -13,6 +13,7 @@ interface ImageUploadProps {
 
 export default function ImageUpload({ uploadImage }: ImageUploadProps) {
   const [image, setImage] = useState<any>(null)
+  const [imageUrl, setImageUrl] = useState<any>(null)
   const [uploadPercent, setUploadPercent] = useState(0)
 
   const upload = async () => {
@@ -32,6 +33,7 @@ export default function ImageUpload({ uploadImage }: ImageUploadProps) {
           await uploadImage(downloadURL)
           setUploadPercent(0)
           setImage(null)
+          setImageUrl(null)
           if (inputRef.current) inputRef.current.value = ''
         })
       }
@@ -44,12 +46,7 @@ export default function ImageUpload({ uploadImage }: ImageUploadProps) {
     <div className='flex flex-col gap-5'>
       {image && (
         <>
-          <Image
-            src={URL.createObjectURL(image)}
-            alt='asdf'
-            width={500}
-            height={500}
-          />
+          <Image src={imageUrl} alt='asdf' width={500} height={500} />
           <Button onClick={upload}>Upload</Button>
           <Progress value={uploadPercent} />
         </>
@@ -58,7 +55,14 @@ export default function ImageUpload({ uploadImage }: ImageUploadProps) {
         ref={inputRef}
         type='file'
         accept='image/*'
-        onChange={e => setImage(e.target.files?.[0])}
+        onChange={e => {
+          setImage(e.target.files?.[0])
+          setImageUrl(
+            e.target.files?.[0]
+              ? URL.createObjectURL(e.target.files?.[0])
+              : null
+          )
+        }}
       />
     </div>
   )
