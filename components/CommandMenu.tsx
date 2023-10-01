@@ -51,6 +51,14 @@ export default function CommandMenu() {
               </CommandItem>
               <CommandItem
                 onSelect={() => {
+                  router.push('/app/account')
+                  setOpen(false)
+                }}
+              >
+                My Account
+              </CommandItem>
+              <CommandItem
+                onSelect={() => {
                   router.push('/app/image-upload')
                   setOpen(false)
                 }}

@@ -33,6 +33,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-easy-crop": "^5.0.2",
+    "react-hot-toast": "^2.4.1",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7"
   },

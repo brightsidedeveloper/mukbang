@@ -8,20 +8,19 @@ import { Skeleton } from '@/components/ui/skeleton'
 
 export default function Room1({ uid }: { uid: string }) {
   const room = 'room-1'
-  const name = uid
   const [token, setToken] = useState('')
 
   useEffect(() => {
     ;(async () => {
       try {
-        const resp = await fetch(`/api/get-token?room=${room}&username=${name}`)
+        const resp = await fetch(`/api/get-token?room=${room}&uid=${uid}`)
         const data = await resp.json()
         setToken(data.token)
       } catch (e) {
         console.error(e)
       }
     })()
-  }, [name])
+  }, [uid])
   if (token === '') {
     return (
       <div className='h-full flex flex-col gap-20 justify-center items-center'>
