@@ -84,7 +84,7 @@ export default function AccountForm({ user, updateUser }: AccountFormProps) {
                 src={newImageUrl ? newImageUrl : profilePicture}
                 alt='pfp'
                 fill
-                className='object-cover border-2 shadow-lg border-accent rounded-full'
+                className='object-cover shadow-lg rounded-full'
               />
             </div>
             <Input
