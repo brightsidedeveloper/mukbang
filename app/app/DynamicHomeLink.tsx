@@ -9,7 +9,8 @@ export default function DyanmicHomeLink() {
   if (pathname.length > 5)
     return (
       <Link href='/app' className='flex gap-1 items-center'>
-        <ChevronLeft /> Back Home
+        <ChevronLeft /> <span>Back </span>
+        <span className='hidden sm:block'>Home</span>
       </Link>
     )
   return (

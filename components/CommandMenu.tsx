@@ -12,8 +12,10 @@ import {
 import { useRouter } from 'next/navigation'
 import { useClerk } from '@clerk/nextjs'
 import useHydrated from '@/hooks/useHydrated'
+import { useTheme } from 'next-themes'
 
 export default function CommandMenu() {
+  const { setTheme } = useTheme()
   const { signOut } = useClerk()
   const router = useRouter()
 
@@ -93,6 +95,12 @@ export default function CommandMenu() {
               </CommandItem>
             </CommandGroup>
             <CommandGroup heading='Settings'>
+              <CommandItem onSelect={() => setTheme('light')}>
+                Light Mode
+              </CommandItem>
+              <CommandItem onSelect={() => setTheme('dark')}>
+                Dark Mode
+              </CommandItem>
               <CommandItem
                 onSelect={() => {
                   signOut()
