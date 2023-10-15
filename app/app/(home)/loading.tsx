@@ -1,4 +1,5 @@
 import { Skeleton } from '@/components/ui/skeleton'
+import { Suspense } from 'react'
 
 export default function loading() {
   return (
