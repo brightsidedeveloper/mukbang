@@ -1,12 +1,12 @@
-'use client'
+"use client"
 
-import '@livekit/components-styles'
-import { LiveKitRoom, VideoConference } from '@livekit/components-react'
-import { useEffect, useState } from 'react'
+import "@livekit/components-styles"
+import { LiveKitRoom, VideoConference } from "@livekit/components-react"
+import { useEffect, useState } from "react"
 
-export default function Room3({ uid }) {
-  const room = 'room-3'
-  const [token, setToken] = useState('')
+export default function Room3({ uid }: { uid: string }) {
+  const room = "room-3"
+  const [token, setToken] = useState("")
 
   useEffect(() => {
     ;(async () => {
@@ -19,7 +19,7 @@ export default function Room3({ uid }) {
       }
     })()
   }, [uid])
-  if (token === '') {
+  if (token === "") {
     return <div></div>
   }
 
@@ -29,7 +29,7 @@ export default function Room3({ uid }) {
       video
       audio
       serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_URL}
-      style={{ height: '80vh' }}
+      style={{ height: "80vh" }}
     >
       <VideoConference />
     </LiveKitRoom>
